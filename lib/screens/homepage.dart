@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo_app/screens/taskpage.dart';
 import 'package:flutter_todo_app/widgets.dart';
 
 class HomePage extends StatefulWidget {
@@ -52,15 +53,23 @@ class _HomePageState extends State<HomePage> {
               Positioned(
                 bottom: 24.0,
                 right: 0.0,
-                child: Container(
-                  height: 60.0,
-                  width: 60.0,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15.0),
-                    color: Color(0XFF7349FE),
-                  ),
-                  child: Image.asset(
-                    "assets/images/add_icon.png",
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => TaskPage()),
+                    );
+                  },
+                  child: Container(
+                    height: 60.0,
+                    width: 60.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.0),
+                      color: Color(0XFF7349FE),
+                    ),
+                    child: Image.asset(
+                      "assets/images/add_icon.png",
+                    ),
                   ),
                 ),
               ),
