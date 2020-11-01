@@ -34,24 +34,27 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Expanded(
-                      child: ListView(
-                    children: [
-                      TaskCardWidget(
-                        title: "Get Started !!",
-                        desc:
-                            "Hello user welcome to todo app,this is default task that you can delete or edit to start using the app.",
-                      ),
-                      TaskCardWidget(),
-                      TaskCardWidget(),
-                      TaskCardWidget(),
-                      TaskCardWidget(),
-                      TaskCardWidget(),
-                    ],
+                      child: ScrollConfiguration(
+                    behavior: NoGlowBehaviour(),
+                    child: ListView(
+                      children: [
+                        TaskCardWidget(
+                          title: "Get Started !!",
+                          desc:
+                              "Hello user welcome to todo app,this is default task that you can delete or edit to start using the app.",
+                        ),
+                        TaskCardWidget(),
+                        TaskCardWidget(),
+                        TaskCardWidget(),
+                        TaskCardWidget(),
+                        TaskCardWidget(),
+                      ],
+                    ),
                   ))
                 ],
               ),
               Positioned(
-                bottom: 24.0,
+                bottom: 8.0,
                 right: 0.0,
                 child: GestureDetector(
                   onTap: () {
@@ -65,7 +68,11 @@ class _HomePageState extends State<HomePage> {
                     width: 60.0,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15.0),
-                      color: Color(0XFF7349FE),
+                      gradient: LinearGradient(
+                        colors: [Color(0XFF7349FE), Color(0XFF643FD8)],
+                        begin: Alignment(0.0, -1.0),
+                        end: Alignment(0.0, 1.0),
+                      ),
                     ),
                     child: Image.asset(
                       "assets/images/add_icon.png",

@@ -43,11 +43,14 @@ class TaskCardWidget extends StatelessWidget {
 }
 
 class TodoWidget extends StatelessWidget {
+  final String text;
+  final bool isDone;
+  TodoWidget({this.text, @required this.isDone});
   @override
   Widget build(BuildContext context) {
     return Container(
         padding: EdgeInsets.symmetric(
-          vertical: 28.0,
+          vertical: 12.0,
           horizontal: 24.0,
         ),
         child: Row(
@@ -57,21 +60,36 @@ class TodoWidget extends StatelessWidget {
               width: 20.0,
               height: 20.0,
               decoration: BoxDecoration(
-                color: Color(0XFF7349FE),
+                color: isDone ? Color(0XFF7349FE) : Colors.transparent,
                 borderRadius: BorderRadius.circular(6.0),
+                border: isDone
+                    ? null
+                    : Border.all(
+                        color: Color(0XFF868290),
+                        width: 1.5,
+                      ),
               ),
               child: Image(
                 image: AssetImage('assets/images/check_icon.png'),
               ),
             ),
-            Text("Todo Widget",
-            style: TextStyle(
-              color: Color(0XFF211551),
-              fontSize: 16.0,
-              fontWeight: FontWeight.bold,
-              
-            ),),
+            Text(
+              text ?? "(Un-named Todo)",
+              style: TextStyle(
+                color: isDone ? Color(0XFF211551) : Color(0XFF868290),
+                fontSize: 16.0,
+                fontWeight: isDone ? FontWeight.bold : FontWeight.w500,
+              ),
+            ),
           ],
         ));
+  }
+}
+
+class NoGlowBehaviour extends ScrollBehavior {
+  @override
+  Widget buildViewportChrome(
+      BuildContext context, Widget child, AxisDirection axisDirection) {
+    return child;
   }
 }
